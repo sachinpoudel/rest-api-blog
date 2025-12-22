@@ -56,8 +56,10 @@ export const connectDB = async (MONGO_URL:any) => {
 
     });
 
-
-
-
+    // Actually connect to MongoDB
+    await mongoose.connect(MONGO_URL, {
+        socketTimeoutMS: 3000,
+        connectTimeoutMS: 3000
+    });
 
 }

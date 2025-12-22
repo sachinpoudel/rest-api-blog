@@ -1,6 +1,9 @@
 import { connectDB } from './configs/db-config'
 import { Env } from './configs/env-config';
 import app from './index'
+import dotenv from 'dotenv-safe'
+
+dotenv.config()
 
 
 

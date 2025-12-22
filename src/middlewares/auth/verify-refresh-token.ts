@@ -1,0 +1,19 @@
+import { Env } from "../../configs/env-config"
+import jwt from "jsonwebtoken";
+import { UnAuthorized } from "../error/app-error";
+
+export const verifyRefreshToken = async function(refreshToken: string) {
+    try {
+
+        const decoded = jwt.verify(refreshToken, 
+            
+            
+            Env.REFRESH_TOKEN_KEY as string)
+
+            if(!decoded) {
+                throw  new UnAuthorized("Invalid refresh token");
+            }
+            return decoded as string
+    } catch (error:any) {
+        throw new UnAuthorized(error.message || "Invalid refresh token");}
+}
